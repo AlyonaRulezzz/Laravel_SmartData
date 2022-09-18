@@ -1,0 +1,2 @@
+php artisan make:model Author -mcr
+php artisan make:model Book -mcr
