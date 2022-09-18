@@ -47,7 +47,9 @@ class BookController extends Controller
     public function show(Book $book)
     {
         //
-      return $book->author->author;
+      // $asd = $book->author->author;
+      // return = $book->union($asd);
+      return $book;
     }
 
     /**
