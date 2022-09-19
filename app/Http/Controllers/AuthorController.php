@@ -18,9 +18,11 @@ class AuthorController extends Controller
         //
       // return Author::all();
 
-      return DB::select('SELECT 
-      authors.author,(SELECT Count(books.title) FROM        books WHERE books.author_id=authors.id) FROM          authors');
+      // return DB::select('SELECT 
+      // authors.author,(SELECT Count(books.title) FROM books WHERE books.author_id=authors.id) FROM authors');
 
+      return DB::select('SELECT 
+      authors.author, (SELECT Count(books.title) FROM books WHERE books.author_id=authors.id) FROM authors');
       
     }
 

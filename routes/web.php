@@ -15,9 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome-form');
 
 Route::get('/form_authors', function () {
     // dd(Request:: all()); 
   return view('form_authors');
 })->name('form_authors-form');
+
+// Route::get('/api/v1/author', function () {
+//     // dd(Request:: all()); 
+//   return view('author');
+// })->name('author-form');
+
+// Route::get('/form_authors', function () {
+//     // dd(Request:: all()); 
+//   return view('form_authors');
+// })->name('form_authors-form');
