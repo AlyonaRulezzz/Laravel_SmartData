@@ -40,7 +40,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create($request->all());
+      try {
+        $created_book = Book::create($request->all());
+        return response()->json(["OTBET" => "XOPOLLIO",]);
+      } catch (\Illuminate\Database\QueryException $e) {
+        //https://stackoverflow.com/questions/59577333/reporting-error-due-to-foreign-key-constraint-in-laravel
+          var_dump($e->errorInfo);
+      }
     }
 
     /**
