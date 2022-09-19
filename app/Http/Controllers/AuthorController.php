@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
@@ -15,7 +16,12 @@ class AuthorController extends Controller
     public function index()  
     {
         //
-      return Author::all();
+      // return Author::all();
+
+      return DB::select('SELECT 
+      authors.author,(SELECT Count(books.title) FROM        books WHERE books.author_id=authors.id) FROM          authors');
+
+      
     }
 
     /**
@@ -48,7 +54,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        return $author;
     }
 
     /**
