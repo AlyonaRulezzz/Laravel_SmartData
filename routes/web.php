@@ -25,7 +25,7 @@ Route::get('/form_authors', function () {
 Route::get('/list', function () {
     // dd(Request:: all()); 
   return view('list');
-})->name('author-form');
+})->name('list-form');
 
 // Route::get('/form_authors', function () {
 //     // dd(Request:: all()); 

@@ -29,6 +29,7 @@
           <a href="{{route('form_authors-form')}}">Форма></a>
           <a href="{{route('author.index')}}">Список авторов с указанием количества книг></a>
           <a href="{{route('book.index')}}">Список книг с указанием автора></a>
+          <a href="{{route('list-form')}}">Список книг, update></a>
 
         </nav>
       </div>

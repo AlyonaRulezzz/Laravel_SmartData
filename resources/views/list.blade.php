@@ -16,10 +16,26 @@
   import htm from 'https://unpkg.com/htm?module';
   const html = htm.bind(h);
 
-
   const Com = (props) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+
+    const updateBook = async (prop) => {
+      try {
+        const response = await fetch('api/v1/book/'+2+'?title=Mu-Mu', {
+                        method: 'PUT',
+                      })
+                      .then(res => res.text()) // or res.json()
+                      .then(res => console.log(res));
+        const json = await response.json();
+        setData(json);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
     const getBooks = async () => {
       try {
         const response = await fetch('/api/v1/book');
@@ -40,12 +56,13 @@
     else
       return html`
       <div>
-      <a href="/api/v1/author">JSON</a>
-        <ul>
+      <a href="/api/v1/book">JSON</a>
+        <form>
           ${data.map(author => html`
-            <li key="${author.id}">${author.title}+${author.author}</li>
+            <input value="${author.title}" /> <input value="${author.author}" />
+            <button class="btn btn-success" onClick="${updateBook}">updateBook</button><br />
           `)}
-        </ul>
+        </form>
         <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8' crossorigin='anonymous' />
       </div>`
   }
